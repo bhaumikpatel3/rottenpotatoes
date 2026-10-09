@@ -1,0 +1,10 @@
+<% content_for :title, "Edit #{@movie.title} | RottenPotatoes" %>
+<%= link_to "← Back to collection", movies_path, class: "back-link" %>
+<section class="form-page">
+  <header class="form-heading">
+    <p class="eyebrow">A fresh take</p>
+    <h1>Edit movie.</h1>
+    <p class="intro">Update the details for <strong><%= @movie.title %></strong>.</p>
+  </header>
+  <div class="form-card"><%= render "form", movie: @movie %></div>
+</section>

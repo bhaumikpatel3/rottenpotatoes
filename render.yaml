@@ -1,0 +1,30 @@
+# The free database expires 30 days after creation. Keep it active through grading.
+databases:
+  - name: rottenpotatoes-db
+    plan: free
+    databaseName: rottenpotatoes
+    user: rottenpotatoes
+
+services:
+  - type: web
+    name: rottenpotatoes
+    runtime: ruby
+    plan: free
+    buildCommand: bash bin/render-build.sh
+    startCommand: bundle exec rails server -b 0.0.0.0
+    healthCheckPath: /up
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: rottenpotatoes-db
+          property: connectionString
+      - key: SECRET_KEY_BASE
+        generateValue: true
+      - key: RAILS_ENV
+        value: production
+      - key: BUNDLE_WITHOUT
+        value: development:test
+      - key: WEB_CONCURRENCY
+        value: "0"
+      - key: RAILS_MAX_THREADS
+        value: "3"

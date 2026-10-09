@@ -1,0 +1,34 @@
+name: Rails checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Prepare test database
+        run: bundle exec rails db:prepare
+        env:
+          RAILS_ENV: test
+      - name: Run behavior tests
+        run: bundle exec rails test
+      - name: Check Ruby style
+        run: bundle exec rubocop
+      - name: Check application security
+        run: bundle exec brakeman --no-pager --quiet
+      - name: Check production assets
+        run: bundle exec rails assets:precompile
+        env:
+          RAILS_ENV: production
+          SECRET_KEY_BASE_DUMMY: "1"

@@ -1,0 +1,45 @@
+<% content_for :title, "The collection | RottenPotatoes" %>
+<section class="page-heading">
+  <div>
+    <p class="eyebrow">The movie shelf</p>
+    <h1>Good stories belong here.</h1>
+    <p class="intro">Explore the collection, revisit a favorite, or make room for something new.</p>
+  </div>
+  <%= link_to "+ Add a movie", new_movie_path, class: "button button-primary" %>
+</section>
+
+<section class="collection" aria-labelledby="collection-heading">
+  <div class="collection-heading">
+    <h2 id="collection-heading">The collection <span class="count"><%= @movies.size %></span></h2>
+    <p class="sort-status">Sorted by <strong><%= MoviesHelper::SORT_LABELS.fetch(@sort).downcase %></strong>, <%= @direction == "asc" ? "ascending" : "descending" %></p>
+  </div>
+  <div class="table-scroll" role="region" aria-label="Movie collection" tabindex="0">
+    <table id="movies">
+      <caption>Choose a column heading to sort. Choose it again to reverse the order.</caption>
+      <thead>
+        <tr>
+          <% Movie::SORT_COLUMNS.each do |column| %>
+            <th scope="col" class="<%= sorted_column_class(column) %>" aria-sort="<%= column_sort_state(column) %>"><%= sort_link(column) %></th>
+          <% end %>
+          <th scope="col" class="actions-heading">Explore</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @movies.each do |movie| %>
+          <tr>
+            <td class="movie-title <%= sorted_column_class('title') %>"><%= link_to movie.title, movie_path(movie) %></td>
+            <td class="<%= sorted_column_class('rating') %>"><span class="rating-badge"><%= movie.rating %></span></td>
+            <td class="release-date <%= sorted_column_class('release_date') %>"><time datetime="<%= movie.release_date.to_date.iso8601 %>"><%= movie.release_date.strftime("%b %-d, %Y") %></time></td>
+            <td class="row-actions"><%= link_to "Details →", movie_path(movie), aria: { label: "Details for #{movie.title}" } %></td>
+          </tr>
+        <% end %>
+        <% if @movies.empty? %>
+          <tr><td colspan="4" class="empty-state">The shelf is waiting for its first story. <%= link_to "Add a movie", new_movie_path %>.</td></tr>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr><td colspan="4"><%= pluralize(@movies.size, "movie") %> in the collection</td></tr>
+      </tfoot>
+    </table>
+  </div>
+</section>

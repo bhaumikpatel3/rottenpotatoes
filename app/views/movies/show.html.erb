@@ -1,0 +1,25 @@
+<% content_for :title, "#{@movie.title} | RottenPotatoes" %>
+<%= link_to "← Back to collection", movies_path, class: "back-link" %>
+<article class="movie-detail">
+  <header class="detail-heading">
+    <p class="eyebrow">From the collection</p>
+    <h1><%= @movie.title %></h1>
+    <dl class="movie-meta">
+      <div><dt>Rating</dt><dd><span class="rating-badge"><%= @movie.rating %></span></dd></div>
+      <div><dt>Released</dt><dd><time datetime="<%= @movie.release_date.to_date.iso8601 %>"><%= @movie.release_date.strftime("%B %-d, %Y") %></time></dd></div>
+    </dl>
+  </header>
+  <section class="synopsis" aria-labelledby="synopsis-heading">
+    <h2 id="synopsis-heading">The story</h2>
+    <% if @movie.description.present? %>
+      <%= simple_format @movie.description %>
+    <% else %>
+      <p class="muted">No description yet. Edit this movie to add its story.</p>
+    <% end %>
+  </section>
+  <div class="detail-actions">
+    <%= link_to "Edit movie", edit_movie_path(@movie), class: "button button-primary" %>
+    <%= link_to "All movies", movies_path, class: "button button-secondary" %>
+    <%= button_to "Delete movie", movie_path(@movie), method: :delete, class: "button button-danger" %>
+  </div>
+</article>

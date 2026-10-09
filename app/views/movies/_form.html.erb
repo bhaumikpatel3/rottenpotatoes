@@ -1,0 +1,35 @@
+<%= form_with model: movie, local: true, class: "movie-form" do |form| %>
+  <% if movie.errors.any? %>
+    <div class="error-summary" role="alert">
+      <h2>Please check <%= pluralize(movie.errors.count, "field") %></h2>
+      <ul>
+        <% movie.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p class="form-note">Title, rating, and release date are required.</p>
+  <div class="field">
+    <%= form.label :title, "Movie title" %>
+    <%= form.text_field :title, required: true, placeholder: "e.g. My Neighbor Totoro" %>
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <%= form.label :rating %>
+      <%= form.select :rating, Movie::RATINGS, { prompt: "Choose a rating" }, required: true %>
+    </div>
+    <div class="field">
+      <%= form.label :release_date %>
+      <%= form.date_field :release_date, value: movie.release_date&.to_date, required: true %>
+    </div>
+  </div>
+  <div class="field">
+    <%= form.label :description, "Description (optional)" %>
+    <%= form.text_area :description, rows: 5, placeholder: "What is the story about?" %>
+  </div>
+  <div class="form-actions">
+    <%= form.submit movie.persisted? ? "Save changes" : "Add movie", class: "button button-primary" %>
+    <%= link_to "Cancel", movie.persisted? ? movie_path(movie) : movies_path, class: "button button-secondary" %>
+  </div>
+<% end %>
