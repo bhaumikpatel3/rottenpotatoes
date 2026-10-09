@@ -1,0 +1,2 @@
+# Start each test from an empty movie table, even if db:prepare seeded it.
+{}
