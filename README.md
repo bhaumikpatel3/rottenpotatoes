@@ -55,6 +55,8 @@ bundle exec brakeman --no-pager --quiet
 
 Tests cover CRUD, invalid inputs, six sorting combinations, session persistence across navigation and CRUD, table structure, sort indicators, missing records, empty collections, escaped content, and repeated seeding. GitHub Actions also checks production asset compilation on Linux.
 
+Verified on Linux at commit `b6da40e`: **15 tests, 149 assertions, 0 failures, 0 errors, 0 skips**. Ruby style, Brakeman, and production asset compilation also passed. [Verification run](https://github.com/bhaumikpatel3/rottenpotatoes/actions/runs/37955566973).
+
 ## Deploy and submit
 
 Follow [the deployment guide](docs/DEPLOYMENT.md) and [the rubric checklist](docs/RUBRIC_CHECKLIST.md). Submit this GitHub repository's URL to Canvas after the deployed app URL has been committed and pushed here.

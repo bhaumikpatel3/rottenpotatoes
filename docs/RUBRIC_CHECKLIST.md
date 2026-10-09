@@ -15,7 +15,8 @@ Run these checks on the public deployed app. Local or CI success alone does not 
 | 15 | Sorting | Check title, rating, and date both ascending and descending; leave the index and return after CRUD to confirm the choice persists. |
 | 15 | Style | Confirm the sorted column has a direction-specific color and arrow; all four pages have handwritten styling. |
 
-- [ ] CI checks pass for the submitted commit.
+- [x] Implementation CI passes at `b6da40e`: 15 tests, 149 assertions, no failures or errors; style, security scan, and production assets pass.
+- [ ] Confirm the final submitted commit is also green.
 - [ ] All public-app checks above pass.
 - [ ] The working deployed URL is in `README.md`, committed and pushed.
 - [ ] Course staff can access the repository.
