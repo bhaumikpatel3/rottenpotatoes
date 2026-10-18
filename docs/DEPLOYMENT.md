@@ -16,6 +16,8 @@ The web service reads Render's `PORT` through `config/puma.rb`. `WEB_CONCURRENCY
 
 Render's free web service sleeps after 15 idle minutes and can take about a minute to wake. Its free PostgreSQL database expires 30 days after creation. Keep the app and database available through grading, not just through the submission deadline. Upgrade only if you choose to pay, or arrange an appropriate hosting alternative before expiration.
 
+This deployment's database was created on October 17, 2026. Render displays **November 16, 2026** as its expiration date. If grading extends beyond that date, arrange continued database hosting before expiration. The sleeping web service wakes on a visit; an expired database does not.
+
 ## Troubleshooting
 
 - Check Render's build logs first. A failed migration or missing environment variable prevents a successful deployment.

@@ -4,7 +4,9 @@ A Ruby on Rails movie catalog for [Programming Assignment 2: Hello Rails](https:
 
 ## Deployed app
 
-Deployment is pending. Replace this sentence with the verified public app URL before submitting.
+[Open RottenPotatoes](https://rottenpotatoes-d8wk.onrender.com)
+
+Hosted on Render with PostgreSQL. The free web service may take about a minute to wake after inactivity. The current free database expires **November 16, 2026**; see [hosting details](docs/DEPLOYMENT.md#free-hosting-lifetime).
 
 ## Run locally
 
@@ -56,6 +58,8 @@ bundle exec brakeman --no-pager --quiet
 Tests cover CRUD, invalid inputs, six sorting combinations, session persistence across navigation and CRUD, table structure, sort indicators, missing records, empty collections, escaped content, and repeated seeding. GitHub Actions also checks production asset compilation on Linux.
 
 Verified on Linux at commit `b6da40e`: **15 tests, 149 assertions, 0 failures, 0 errors, 0 skips**. Ruby style, Brakeman, and production asset compilation also passed. [Verification run](https://github.com/bhaumikpatel3/rottenpotatoes/actions/runs/37955566973).
+
+Live deployment verified on October 17, 2026: all eight seed movies, create/read/update/delete, all six sorting combinations, retained sort selection, semantic table structure, and styled index/new/edit/show pages. The temporary verification movie was deleted after testing.
 
 ## Deploy and submit
 

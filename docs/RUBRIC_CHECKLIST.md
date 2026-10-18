@@ -1,6 +1,6 @@
 # Final checks before Canvas submission
 
-Run these checks on the public deployed app. Local or CI success alone does not establish deployment credit.
+Public app: [RottenPotatoes](https://rottenpotatoes-d8wk.onrender.com). Live checks were performed on October 17, 2026. Local or CI success alone does not establish deployment credit.
 
 | Points | Criterion | Verification |
 | --- | --- | --- |
@@ -16,11 +16,13 @@ Run these checks on the public deployed app. Local or CI success alone does not 
 | 15 | Style | Confirm the sorted column has a direction-specific color and arrow; all four pages have handwritten styling. |
 
 - [x] Implementation CI passes at `b6da40e`: 15 tests, 149 assertions, no failures or errors; style, security scan, and production assets pass.
-- [ ] Confirm the final submitted commit is also green.
-- [ ] All public-app checks above pass.
-- [ ] The working deployed URL is in `README.md`, committed and pushed.
+- [x] Implementation commit `2246ffb` also passes [CI](https://github.com/bhaumikpatel3/rottenpotatoes/actions/runs/37956025489). Check the [latest run](https://github.com/bhaumikpatel3/rottenpotatoes/actions) after any further changes.
+- [x] Public HTTPS, CRUD, all six sorts, session persistence, eight seeded movies, semantic table, and styles on all four pages verified. The temporary test movie was removed.
+- [x] The verified deployed URL is included in `README.md` for the `add deployed app address` commit.
 - [ ] Course staff can access the repository.
 - [ ] The GitHub repository URL is submitted to Canvas by October 19 at 11:59 p.m. in the course's stated timezone.
 - [ ] Hosting remains available through grading.
+
+Both Render resources use the Free plan. Render reports the database expiration as **November 16, 2026**. This covers the expected late-October/early-November grading window; continued availability after that date requires arranging database hosting before expiration. The repository remains private, so course-staff access still needs confirmation.
 
 Only the last commit before the assignment deadline is graded according to the supplied instructions. Do not replace an acceptable on-time submission with a late one without considering the course's late policy. The copied assignment text omitted the numerical late-penalty formula; consult Canvas for the actual formula.
